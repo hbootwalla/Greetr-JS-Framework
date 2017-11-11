@@ -38,12 +38,13 @@
         },
 
         formalGreeting: function(){
-            return formalGreetings[this.language] + ',' + this.fullName();
+            return formalGreetings[this.language] + ', ' + this.fullName();
         },
 
-        greet: function(formal){
+        greet: function(greetType){
             var msg;
-            if(formal){
+            console.log(greetType);
+            if(greetType === 'formal'){
                 msg = this.formalGreeting();
             }
             else{
@@ -68,9 +69,9 @@
             return this;
         },
 
-        HTMLGreeting: function(selector, formal){
+        HTMLGreeting: function(selector, greetType){
             var msg;
-            if(formal){
+            if(greetType === 'formal'){
                 msg = this.formalGreeting();
             }
             else{
@@ -82,13 +83,13 @@
         }
     };
 
-    Greetr.init = function(firstName, lastName, language){
+    Greetr.init = function(firstName = ' ', lastName = ' ', language = 'en'){
 
         var self = this;
 
-        self.firstName = firstName || ' ';
-        self.lastName = lastName || ' ';
-        self.language = language || 'en';
+        self.firstName = firstName;
+        self.lastName = lastName;
+        self.language = language;
 
     }
 
